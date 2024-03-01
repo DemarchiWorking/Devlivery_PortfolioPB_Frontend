@@ -13,6 +13,7 @@ import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.com
 //import { MenuNavComponent } from './components/menu-nav/menu-nav.component';
 //import { MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TitleComponent } from './components/title/title.component';
 //import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormLoginComponent,
     FormRecoveryComponent,
     ThemeToggleComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,

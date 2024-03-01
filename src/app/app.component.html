@@ -1,7 +1,28 @@
-<body [class.dark]="isDarkMode" class="bg-white dark:bg-blue-500">
+<body [class.dark]="isDarkMode" class="bg-white dark:bg-cyan-700">
   <!-- Resto do seu aplicativo -->
+  <div>
 <app-header></app-header>
+<nav class="navbar">
+  <div class="navbar-logo">
+    <img src="" alt="">
+  </div>
+  <ul class="navbar-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="/login">About</a></li>
+    <li><a href="signup">Services</a></li>
+    <!-- Add more links for other routes here -->
+  </ul>
+</nav>
+<app-theme-toggle (themeToggled)="toggleTheme()"></app-theme-toggle>
+<app-title></app-title>
 
-<app-form-register></app-form-register>
+<router-outlet></router-outlet>
 
+<!--
+<button (click)="toggleTheme()">Alternar Tema</button>
+-->
+  <!-- Resto do seu aplicativo -->
+  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+
+</div>
 </body>
