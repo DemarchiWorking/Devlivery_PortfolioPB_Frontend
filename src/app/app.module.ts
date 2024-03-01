@@ -5,14 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SimplesComponent } from './components/forms/simples/simples.component';
+import { FormRegisterComponent } from './pages/register/form-register/form-register.component';
+import { FormRegisterProfileComponent } from './pages/register/form-register-profile/form-register-profile.component';
+import { FormLoginComponent } from './pages/login/form-login/form-login.component';
+import { FormRecoveryComponent } from './pages/login/form-recovery/form-recovery.component';
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
+//import { MenuNavComponent } from './components/menu-nav/menu-nav.component';
+//import { MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SimplesComponent,
+    FormRegisterComponent,
+    FormRegisterProfileComponent,
+    FormLoginComponent,
+    FormRecoveryComponent,
+    ThemeToggleComponent,
   ],
   imports: [
     BrowserModule,

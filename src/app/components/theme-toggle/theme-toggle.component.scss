@@ -1,0 +1,42 @@
+/* No seu arquivo CSS */
+.slide-toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+  }
+  
+  .slide-input {
+    display: none;
+  }
+  
+  .slide-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ddd;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .slide-label:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  .slide-input:checked + .slide-label {
+    background-color: #6ab04c; /* Cor quando ativado */
+  }
+  
+  .slide-input:checked + .slide-label:before {
+    transform: translateX(30px); /* Desliza para a direita */
+  }

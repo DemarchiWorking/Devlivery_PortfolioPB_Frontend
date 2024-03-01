@@ -3,3 +3,34 @@ h1 {
     color: red;
     font-weight: 700;
 }
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem;
+    color: white;
+  }
+  
+  .navbar-logo img {
+    width: 50px;
+    height: auto;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .navbar-links li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links li a:hover {
+    color: #f39c12; /* Change to your desired hover color */
+  }
