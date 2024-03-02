@@ -1,0 +1,58 @@
+
+input{
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+label{
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    cursor: pointer;
+}
+
+.tog{
+    background-color: #D8D9DB;
+    width: 30px;
+    height: 6px;
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    transform: translate(-50%,-50%) rotate(0deg);
+    border-radius: 10px;
+    transition: all .3s;
+}
+
+.bottom{
+    margin-top: 10px;
+}
+
+.top{
+    margin-top: -10px;
+
+}
+#ham:checked ~ .top{
+    margin-top: 0px;
+    transform: rotate(-45deg);
+    margin-left: -20px;
+    background-color: red;
+
+}
+
+#ham:checked ~ .bottom{
+    margin-top: 0px;
+    transform: rotate(45deg);
+    margin-left: -20px;
+    background-color: red;
+}
+
+#ham:checked ~ .middle{
+    opacity: 0;
+}
+.middle{
+    transition: .2s;
+}

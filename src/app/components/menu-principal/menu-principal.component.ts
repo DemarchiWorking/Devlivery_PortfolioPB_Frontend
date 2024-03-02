@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-menu-nav',
-  templateUrl: './menu-nav.component.html',
-  styleUrls: ['./menu-nav.component.scss'],
-  /*
+  selector: 'app-menu-principal',
+  templateUrl: './menu-principal.component.html',
+  styleUrls: ['./menu-principal.component.scss'],
   animations: [ 
     trigger('opacityScale', [
       transition(':enter', [
@@ -16,16 +16,22 @@ import { Component, OnInit } from '@angular/core';
         animate('75ms ease-in', style({ opacity: 0, transform: 'scale(.95)' }))
       ])
     ])
-  ]*/
-  })
-export class MenuNavComponent implements OnInit {
-
+  ]
+})
+export class MenuPrincipalComponent implements OnInit {
   isMenu = false;
   isMobileMenu = false;
-  constructor() { }
 
-  ngOnInit(): void {}
-  //toggleMenu(){ this.isMenu = !this.isMenu; }
-  //toggleMobileMenu(){}
+  constructor() { }
+  ngOnInit(): void {
+  }
     
-}
+  toggleMenu(){
+      this.isMenu = !this.isMenu;
+  }
+  
+  toggleMobileMenu(){
+      this.isMobileMenu = !this.isMobileMenu;
+  }
+  }
+      
