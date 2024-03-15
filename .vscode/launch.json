@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "command": "npm start",
+            "name": "Run npm start",
             "request": "launch",
-            "name": "Open app.component.html",
-            "file": "c:\\Users\\AntonioEduardoSilvei\\Documents\\ProjetoBlocoEngenharia\\DevliveryPortfolioPBFrontend\\DevliveryPortfolioPBFrontend\\src\\app\\app.component.html"
+            "type": "node-terminal"
         }
     ]
 }
