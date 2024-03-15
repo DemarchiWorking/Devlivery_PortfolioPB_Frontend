@@ -1,0 +1,25 @@
+import { Component, OnInit } from '@angular/core';
+import { LanguageService } from '../services/language.service';
+
+@Component({
+  selector: 'app-outro',
+  templateUrl: './outro.component.html',
+  styleUrls: ['./outro.component.css']
+})
+export class OutroComponent implements OnInit {
+  selectedLang: string;
+
+  constructor(private languageService: LanguageService) { }
+
+  ngOnInit() {
+    this.languageService.currentLanguage.subscribe(lang => this.selectedLang = lang);
+  }
+}
+
+<select [(ngModel)]="selectedLang" (change)="changeLanguage()">
+  <option value="pt">Português</option>
+  <option value="en">English</option>
+  <option value="es">Español</option>
+</select>v
+
+

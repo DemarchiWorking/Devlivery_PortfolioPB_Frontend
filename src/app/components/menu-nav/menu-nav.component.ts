@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu-nav',
@@ -27,5 +27,5 @@ export class MenuNavComponent implements OnInit {
   ngOnInit(): void {}
   //toggleMenu(){ this.isMenu = !this.isMenu; }
   //toggleMobileMenu(){}
-    
+
 }

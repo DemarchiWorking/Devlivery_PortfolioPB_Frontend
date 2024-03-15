@@ -20,6 +20,23 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MenuPrincipalComponent } from './components/menu-principal/menu-principal.component';
 import { BotaoToggleMenuComponent } from './components/botao-toggle-menu/botao-toggle-menu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BotaoTemaComponent } from './components/botao-tema/botao-tema.component';
+import { IdiomaComponent } from './components/idioma/idioma.component';
+import { CadastroProjetoComponent } from './pages/portfolio/cadastro-projeto/cadastro-projeto.component';
+import { BotaoTemComponent } from './pages/portfolio/botao-tem/botao-tem.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {HttpClientModule} from '@angular/common/http';
+import { CatalogoComponent } from './pages/portfolio/catalogo/catalogo.component';
+import { AmizadeComponent } from './pages/networking/amizade/amizade.component';
+import { NetworkingComponent } from './pages/networking/networking/networking.component';
+import { NegocioComponent } from './pages/negocio/negocio/negocio.component';
+import { PaginaInicialComponent } from './pages/inicio/pagina-inicial/pagina-inicial.component';
+import { ProjetoDetalheComponent } from './pages/portfolio/projeto-detalhe/projeto-detalhe.component';
+import { EntrarComponent } from './pages/inicio/entrar/entrar.component';
+import { RegistrarComponent } from './pages/inicio/registrar/registrar.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +50,19 @@ import { BotaoToggleMenuComponent } from './components/botao-toggle-menu/botao-t
     TitleComponent,
     MenuPrincipalComponent,
     BotaoToggleMenuComponent,
+    BotaoTemaComponent,
+    IdiomaComponent,
+    CadastroProjetoComponent,
+    BotaoTemComponent,
+    SidebarComponent,
+    CatalogoComponent,
+    AmizadeComponent,
+    NetworkingComponent,
+    NegocioComponent,
+    PaginaInicialComponent,
+    ProjetoDetalheComponent,
+    EntrarComponent,
+    RegistrarComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +73,9 @@ import { BotaoToggleMenuComponent } from './components/botao-toggle-menu/botao-t
     //MatButtonModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

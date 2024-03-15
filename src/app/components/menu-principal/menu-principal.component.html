@@ -1,4 +1,5 @@
 <nav class="bg-white dark:bg-slate-800 dark:text-white shadow md:flex md:items-center md:justify-between fixed" style="width: 100%; z-index: 1;">
+
   <div class="flex justify-between items-center  p-5" >
     <!--<span class="text-2xl font-[Poppins] cursor-pointer font-extrabold tracking-tight leading-none">
       <img class="h-10 inline"
@@ -19,23 +20,27 @@
       [ngClass]="{'light': !isDarkEnable, 'dark': isDarkEnable }">-->
 
     <li class="mx-4 my-6 md:my-0">
-      <a href="#" class="text-xl hover:text-cyan-500 duration-500"> Inicio </a>
+      <a href="inicio" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[0] }}  </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="#" class="text-xl hover:text-cyan-500 duration-500"> Portifólio </a>
+      <a href="catalogo" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[1] }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="#" class="text-xl hover:text-cyan-500 duration-500"> Serviços </a>
+      <a href="negocio" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[2] }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="#" class="text-xl hover:text-cyan-500 duration-500"> Quem Somos </a>
+      <a href="networking" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[3] }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="#" class="text-xl hover:text-cyan-500 duration-500"> Contato</a>
+      <a href="#" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[4] }}</a>
     </li>
 
-    <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
-      Entrar
-    </button>
+    <a href="login">  
+      <button class="text-xl bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
+        Entrar
+      </button>
+    </a>
+   
+    
   </ul>
 </nav>

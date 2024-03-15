@@ -1,0 +1,172 @@
+<div>
+<!-- project-registration-form.component.html -->
+
+<div class="flex justify-center">
+    <div class="w-full max-w-md">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <br>
+            <h2 class="text-2xl font-semibold mb-4">Cadastro de Projetos</h2>
+  
+            <br>
+            ================================
+                <button (click)="cadastrarNovoProjeto()" style="background-color: red;">
+                    test</button>
+
+                    
+            ================================
+            <br>
+            <br>
+                <!-- Título -->
+                <!-- ... (campos existentes) ... -->
+                
+                <button (click)="onNextStep(finalFormulario)"
+                 class="bg-blue-500 text-white px-4 py-2 rounded 
+                 hover:bg-blue-600 transition duration-300">
+
+                    Continuar
+                </button>
+
+                <!-- Botão Continuar -->
+                <form *ngIf="this.finalFormulario == true">
+                    <div class="mb-4"  >
+                        <label for="foto" class="block text-sm font-medium"> Nome:</label>
+                        <input type="text" id="foto" class="w-full p-2 border rounded">
+                    </div>
+                    <div class="mb-4" >
+                        <label for="link" class="block text-sm font-medium">Descricao:</label>
+                        <textarea type="text" id="link" class="w-full p-2 border rounded">
+                    </div>  
+
+                    <!-- Valor -->
+                    <div class="mb-4">
+                        <label for="valor" class="block text-sm font-medium">Objetivo:</label>
+                        <input type="text" id="valor" class="w-full p-2 border rounded">
+                    </div>
+
+                </form>
+
+                    <div>
+                    <!-- Foto -->
+
+
+                    <!-- Link -->
+
+                    <!-- Botão Cadastrar -->
+                    <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-300">
+                        Cadastrar
+                    </button>
+                </div>
+                <!-- Novos campos para a segunda etapa -->
+                <div>
+                    <form *ngIf="this.finalFormulario == false">
+                    <!-- Foto -->
+                    <div class="mb-4" >
+                        <label for="foto" class="block text-sm font-medium">Foto:</label>
+                        <input type="text" id="foto" class="w-full p-2 border rounded">
+                    </div>
+
+                    <!-- Valor -->
+                    <div class="mb-4">
+                        <label for="valor" class="block text-sm font-medium">Valor:</label>
+                        <input type="text" id="valor" class="w-full p-2 border rounded">
+                    </div>
+
+                    <!-- Link -->
+                    <div class="mb-4" >
+                        <label for="link" class="block text-sm font-medium">Link:</label>
+                        <input type="text" id="link" class="w-full p-2 border rounded">
+                    </div>
+
+                    <!-- Botão Cadastrar -->
+                    <!---->
+            </form>
+                </div>
+        </div>
+    </div>
+</div>
+<!--
+    <div *ngIf="idioma=='pt'" style="display: flex; justify-content: center;">
+        <form class="w-full max-w-md">
+          <div class="mb-4">
+            <label for="titulo" class="block text-sm font-medium">Título:</label>
+            <input type="text" id="titulo" class="w-full p-2 border rounded">
+          </div>
+          <div class="mb-4">
+            <label for="objetivo" class="block text-sm font-medium">Objetivo:</label>
+            <input type="text" id="objetivo" class="w-full p-2 border rounded">
+          </div>
+      
+          <div class="mb-4">
+            <label for="descricao" class="block text-sm font-medium">Descrição:</label>
+            <textarea id="descricao" class="w-full p-2 border rounded"></textarea>
+          </div>
+      
+          <div class="mb-4">
+            <label for="foto" class="block text-sm font-medium">Foto:</label>
+            <input type="text" id="foto" class="w-full p-2 border rounded">
+          </div>
+      
+          <div class="mb-4">
+            <label for="valor" class="block text-sm font-medium">Valor:</label>
+            <input type="text" id="valor" class="w-full p-2 border rounded">
+          </div>
+      
+          <div class="mb-4">
+            <label for="link" class="block text-sm font-medium">Link:</label>
+            <input type="text" id="link" class="w-full p-2 border rounded">
+          </div>
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Salvar
+          </button>
+
+      -->
+      
+
+<!--
+<div>
+
+    <div *ngIf="idioma=='en'" style="display: flex; justify-content: center;">
+        <form class="w-full max-w-md">
+          <div class="mb-4">
+            <label for="titulo" class="block text-sm font-medium">Title:</label>
+            <input type="text" id="titulo" class="w-full p-2 border rounded">
+          </div>
+  
+          <div class="mb-4">
+            <label for="objetivo" class="block text-sm font-medium">Objective:</label>
+            <input type="text" id="objetivo" class="w-full p-2 border rounded">
+          </div>
+      
+          <div class="mb-4">
+            <label for="descricao" class="block text-sm font-medium">Descrição:</label>
+            <textarea id="descricao" class="w-full p-2 border rounded"></textarea>
+          </div>
+      
+          <div class="mb-4">
+            <label for="foto" class="block text-sm font-medium">Foto:</label>
+            <input type="text" id="foto" class="w-full p-2 border rounded">
+          </div>
+      
+          <div class="mb-4">
+            <label for="valor" class="block text-sm font-medium">Valor:</label>
+            <input type="text" id="valor" class="w-full p-2 border rounded">
+          </div>
+      
+          <div class="mb-4">
+            <label for="link" class="block text-sm font-medium">Link:</label>
+            <input type="text" id="link" class="w-full p-2 border rounded">
+          </div>        </form>
+      </div>
+      -->
+          <!-- ... Repita para os outros campos ... -->
+        <!--
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Salvar
+          </button>-->
+
+
+
+
+
+<!-- Adicione os outros campos (objetivo, descricao, foto, valor, link, usuarioid) aqui -->
+<!-- Exemplo: -->

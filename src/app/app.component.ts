@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { IdiomaService } from './service/idioma/idioma.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,30 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DevliveryPortfolioPBFrontend';
+  idiomaAtual : string | undefined = "";
+  modoDark : boolean = false;
 
 
-  isDarkMode = false; // Inicialmente, use o tema claro
+  
+    constructor(private idiomaService: IdiomaService)
+      {
+        this.idiomaAtual = idiomaService.obterIdioma();
+      }
+      
+    
 
   toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    document.body.classList.toggle('dark', this.isDarkMode); // Adiciona ou remove a classe 'dark' no <body>
+    this.modoDark = !this.modoDark;
+    document.body.classList.toggle('dark', this.modoDark); // Adiciona ou remove a classe 'dark' no <body>
   }
+
+  idiomaSelecionado() : any {
+    //this.idiomaAtual = 
+  }
+  alterarIdioma()
+  {
+
+  }
+ 
+
 }
