@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Projeto } from 'src/app/model/projeto';
+import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
 import { LocalStorageUtils } from 'src/app/service/local-storage/LocalStorageUtils';
+import { ProjetoService } from 'src/app/service/projeto/projeto.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -19,7 +23,10 @@ export class CatalogoComponent implements OnInit {
   finalFormulario : boolean = false;
   idiomaService: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private projetoService: ProjetoService,
+    ) { }
 
   ngOnInit(): void {
 
@@ -41,19 +48,33 @@ export class CatalogoComponent implements OnInit {
     var idioma = this.idiomaService.obterIdioma();
   }
 
-  cadastrarNovoProjeto() {
-    var request =  
+  cadastrarNovoProjeto(): any {
+    var projeto : CadastroProjetoModel =  
     {
-      "Titulo" : "TEST",
-      "Objetivo" : "TEST",
-      "Descricao" : "TEST",
-      "Foto" : "TEST",
-      "Valor" : 222,
-      "Link" : "ASDSAD",
-      "UsuarioId": "test"
+      "titulo" : "TEST",
+      "objetivo" : "TEST",
+      "descricao" : "TEST",
+      "foto" : "TEST",
+      "valor" : 222,
+      "link" : "ASDSAD",
+      "usuarioId": "test"
     }
-    alert(request.Titulo)
-    /*
+
+    this.projetoService.cadastrarProjeto(projeto)
+    .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
+    
+    
+    //location.reload();
+
+    
+    /* 
+     var t = this.projetoService.cadastrarProjeto(projeto).toPromise();
+     alert("FIM");
+
+     return t;   ;(await this.projetoService.cadastrarProjeto(projeto))
+    .subscribe(resultado => this.sucessoSubmeter(),
+     error => this.falhouSubmeter(error));
+
   this.projectService.cadastrarProjeto(request).subscribe(
     (response) => {
       console.log('Projeto cadastrado com sucesso!', response);
@@ -63,5 +84,12 @@ export class CatalogoComponent implements OnInit {
       console.error('Erro ao cadastrar projeto:', error);
       // Trate o erro conforme sua necessidade
     */}
+  falhouSubmeter(error: any): void {
+    alert("ERR"+error+ JSON.parse(error).toString()
+    + JSON.stringify(error).toString());
+  }
+  sucessoSubmeter(): void {
+    alert("OK");
+  }
 
 }

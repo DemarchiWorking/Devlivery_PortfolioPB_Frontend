@@ -29,6 +29,9 @@ export class EntrarComponent implements OnInit {
 
   logar(){
     alert(this.formularioLogin?.value?.email?.toString());
+    this.LocalStorage.salvarInformacoesPerfil("test");
+    var test = this.LocalStorage.obtenInformacoesUsuario();
+    alert(test);
   }
 /*
     this.LocalStorage.limparDadosLocaisUsuario();

@@ -1,6 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Projeto } from 'src/app/model/projeto';
+import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
 import { IdiomaService } from 'src/app/service/idioma/idioma.service';
 import { LocalStorageUtils } from 'src/app/service/local-storage/LocalStorageUtils';
 import { ProjetoService } from 'src/app/service/projeto/projeto.service';
@@ -27,6 +29,7 @@ import { ProjetoService } from 'src/app/service/projeto/projeto.service';
 
 export class CadastroProjetoComponent implements OnInit {
   public LocalStorage = new LocalStorageUtils();
+  private apiUrl = ''; 
 
   formulario = this.formBuilder.group({
     email: [''],
@@ -38,7 +41,10 @@ export class CadastroProjetoComponent implements OnInit {
   finalFormulario : boolean = false;
   constructor(private formBuilder: FormBuilder, 
     private idiomaService: IdiomaService,
-    private projectService: ProjetoService) { 
+    private projectService: ProjetoService,
+    
+    
+    ) { 
     this.idioma = idiomaService.obterIdioma();
   }
 
@@ -53,31 +59,35 @@ export class CadastroProjetoComponent implements OnInit {
   }
 
   cadastrarNovoProjeto() {
-    var request =  
+    var request : CadastroProjetoModel =  
     {
-      "Titulo" : "TEST",
-      "Objetivo" : "TEST",
-      "Descricao" : "TEST",
-      "Foto" : "TEST",
-      "Valor" : 222,
-      "Link" : "ASDSAD",
-      "UsuarioId": "test"
+      "titulo" : "TEST",
+      "objetivo" : "TEST",
+      "descricao" : "TEST",
+      "foto" : "TEST",
+      "valor" : 222,
+      "link" : "ASDSAD",
+      "usuarioId": "1"
     }
-    alert(request.Titulo)
-  this.projectService.cadastrarProjeto(request).subscribe(
+/*
+    var test = this.projectService.cadastrarProjeto(request).subscribe(
     (response) => {
       console.log('Projeto cadastrado com sucesso!', response);
-      // Faça o que for necessário após o cadastro
+
     },
     (error) => {
       console.error('Erro ao cadastrar projeto:', error);
-      // Trate o erro conforme sua necessidade
     }
-  );
+  );*/
 }
 
 
-/*
+/*  
+  constructor(private http: HttpClient) {}
+
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(this.apiUrl);
+  }
 private formBuilder: NonNullableFormBuilder, // NonNullableFormBuilder
 logar(){
 }
