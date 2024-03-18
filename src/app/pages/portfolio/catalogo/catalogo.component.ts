@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Projeto } from 'src/app/model/projeto';
 import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
-import { LocalStorageUtils } from 'src/app/service/local-storage/LocalStorageUtils';
 import { ProjetoService } from 'src/app/service/projeto/projeto.service';
 
 @Component({
@@ -62,34 +59,13 @@ export class CatalogoComponent implements OnInit {
 
     this.projetoService.cadastrarProjeto(projeto)
     .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
-    
-    
-    //location.reload();
-
-    
-    /* 
-     var t = this.projetoService.cadastrarProjeto(projeto).toPromise();
-     alert("FIM");
-
-     return t;   ;(await this.projetoService.cadastrarProjeto(projeto))
-    .subscribe(resultado => this.sucessoSubmeter(),
-     error => this.falhouSubmeter(error));
-
-  this.projectService.cadastrarProjeto(request).subscribe(
-    (response) => {
-      console.log('Projeto cadastrado com sucesso!', response);
-      // Faça o que for necessário após o cadastro
-    },
-    (error) => {
-      console.error('Erro ao cadastrar projeto:', error);
-      // Trate o erro conforme sua necessidade
-    */}
-  falhouSubmeter(error: any): void {
-    alert("ERR"+error+ JSON.parse(error).toString()
-    + JSON.stringify(error).toString());
-  }
-  sucessoSubmeter(): void {
-    alert("OK");
-  }
+    }
+    falhouSubmeter(error: any): void {
+      alert("ERR"+error+ JSON.parse(error).toString()
+      + JSON.stringify(error).toString());
+    }
+    sucessoSubmeter(): void {
+      alert("OK");
+    }
 
 }

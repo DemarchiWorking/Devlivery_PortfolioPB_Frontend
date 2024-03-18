@@ -62,7 +62,8 @@ import { RegistrarComponent } from './pages/inicio/registrar/registrar.component
     PaginaInicialComponent,
     ProjetoDetalheComponent,
     EntrarComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    AmizadeComponent,
   ],
   imports: [
     BrowserModule,
