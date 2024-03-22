@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigStorageService } from 'src/app/service/config-storage/config-storage.service';
 
 @Component({
   selector: 'app-amizade',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AmizadeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private  configStorageService : ConfigStorageService,
+  ) { }
 
   ngOnInit(): void {
+    this.configStorageService.aplicarTema()
   }
 
 }

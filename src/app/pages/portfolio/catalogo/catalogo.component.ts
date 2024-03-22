@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
+import { ConfigStorageService } from 'src/app/service/config-storage/config-storage.service';
 import { ProjetoService } from 'src/app/service/projeto/projeto.service';
 
 @Component({
@@ -23,10 +24,11 @@ export class CatalogoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private projetoService: ProjetoService,
+    private  configStorageService : ConfigStorageService,
     ) { }
 
   ngOnInit(): void {
-
+    this.configStorageService.aplicarTema();
   }
 
   submeterProjeto(){

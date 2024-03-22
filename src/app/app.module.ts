@@ -35,6 +35,7 @@ import { PaginaInicialComponent } from './pages/inicio/pagina-inicial/pagina-ini
 import { ProjetoDetalheComponent } from './pages/portfolio/projeto-detalhe/projeto-detalhe.component';
 import { EntrarComponent } from './pages/inicio/entrar/entrar.component';
 import { RegistrarComponent } from './pages/inicio/registrar/registrar.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { RegistrarComponent } from './pages/inicio/registrar/registrar.component
     EntrarComponent,
     RegistrarComponent,
     AmizadeComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,

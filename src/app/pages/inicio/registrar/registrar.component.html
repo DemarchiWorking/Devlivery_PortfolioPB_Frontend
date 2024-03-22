@@ -1,55 +1,81 @@
+<!-- <div id="toast-default" style=" width: 100vw;" class="flex items-center text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.147 15.085a7.159 7.159 0 0 1-6.189 3.307A6.713 6.713 0 0 1 3.1 15.444c-2.679-4.513.287-8.737.888-9.548A4.373 4.373 0 0 0 5 1.608c1.287.953 6.445 3.218 5.537 10.5 1.5-1.122 2.706-3.01 2.853-6.14 1.433 1.049 3.993 5.395 1.757 9.117Z"/>
+        </svg> {{ this.alerta.tipoAlerta.toString() }}
+        <span class="sr-only">{{ this.alerta.tipoAlerta.toString() }}</span>
+
+    </div>
+    <div class="ms-3 text-sm font-normal">{{ this.alerta.texto.toString() }}</div>
+</div> -->
+
+<div *ngIf="showAlert" [@alert] class="bg-red-100 pt-12 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold"> {{ this.alerta.titulo }} </strong>
+    <span class="block sm:inline">{{ this.alerta.texto }} </span>
+</div>
+
 <section class="fundo-background ">
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
-        <div class="pt-16">
-        </div>
-        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 opacity-90">
-            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                        <img
-                        src="../../../../assets/icone-login.png"
-                        class="mr-2 w-24 h-22"
-                        alt="logo-login"
-                      /> <h1> DEVLIVERY </h1>
-                    </a>
-                </h1>
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+            <div class="pt-16">
+            </div>
+            <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 opacity-96">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                            <img
+                            src="../../../../assets/icone-login.png"
+                            class="mr-2 w-24 h-22"
+                            alt="logo-login"
+                        /> <h1> DEVLIVERY </h1>
+                        </a>
+                    </h1>
 
-                <a href="#" class="flex items-center mb-6 font-semibold text-gray-900 dark:text-white">Faça seu cadastro para ter acesso a plataforma.</a>
-                <form class="space-y-4 md:space-y-6"  [formGroup]="formularioCadastro">
-                    <div>
-                        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Email </label>
-                        <input type="text" formControlName="nome" name="nome" id="nome" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu Nome" required="">
-                    </div>
-                    <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Email </label>
-                        <input type="email" formControlName="email" name="email" id="email"  (blur)="verificarEmail()" [ngClass]="{ 'borda-red': bordaVermelhaEmail }" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu Email" required="">
-                    </div>
-                    <div>
-                        <label for="senha" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Senha </label>
-                        <input type="password" formControlName="senha" name="senha" id="senha" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite sua senha" required="">
-                    </div>                    
-                    <div>
-                        <label for="confirmarSenha" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Confirma Senha </label>
-                        <input type="password" formControlName="confirmarSenha" name="confirmarSenha" (blur)="verificarSenhas()"  [ngClass]="{ 'borda-red': bordaVermelhaSenha }" id="confirmarSenha" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
-                    </div>
+                    <a href="#" class="flex items-center mb-6 font-semibold text-gray-900 dark:text-white">Faça seu cadastro para ter acesso a plataforma.</a>
+                    <form class="space-y-4 md:space-y-6"  [formGroup]="formularioCadastro">
+                        <div>
+                            <label for="nome" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Nome Completo </label>
+                            <input type="text" formControlName="nome" name="nome" id="nome" (blur)="verificarInputNome()" [ngClass]="{ 'borda-red': bordaVermelhaNome }" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu Nome" required="">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Email </label>
+                            <input type="email" formControlName="email" name="email" id="email"  (blur)="verificarInputEmail()" [ngClass]="{ 'borda-red': bordaVermelhaEmail }" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu Email" required="">
+                        </div>
+                        <div>
+                            <label for="senha" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Senha </label>
+                            <input type="password" formControlName="senha" name="senha" (blur)="verificarInputSenha()" id="senha"  [ngClass]="{ 'borda-red': bordaVermelhaSenha }"  placeholder="••••••••"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite sua senha" required="">
+                        </div>                    
+                        <div>
+                            <label for="confirmarSenha" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Confirma Senha </label>
+                            <input type="password" formControlName="confirmarSenha"  name="confirmarSenha" (blur)="verificarSenhas()"  [ngClass]="{ 'borda-red': bordaVermelhaConfirmarSenha }" id="confirmarSenha" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                        </div>
 
-                    <div>
-                        <label for="telefone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Email </label>
-                        <input type="text" formControlName="telefone" name="telefone" id="telefone" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu Telefone"   required="">
-                    </div>
-                    <div class="text-red-500" *ngIf="formularioCadastro.hasError('senhasDiferentes')">
-                        As senhas não coincidem.
-                    </div>
-                    <button type="button"   (click)="realizarCadastro()" class="w-full bg-blue-600 text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"> Cadastrar </button>
-                    
+                        <div>
+                            <label for="telefone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Telefone </label>
+                            <input type="text" formControlName="telefone" name="telefone" id="telefone" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Digite seu Telefone"   required="">
+                        </div>
 
-
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                         <a href="login" class="font-medium text-primary-600 hover:underline dark:text-blue-500"> Voltar  </a>
-
+                        <button type="button" (click)="realizarCadastro()" class="w-full bg-blue-600 text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"> Cadastrar </button>
+                        
+                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                            <a href="login" class="font-medium text-primary-600 hover:underline dark:text-blue-500"> Voltar  </a>
+'
                          <br> Criar animacao da tela de login para tela de cadastro alterando o fundo branco com transition / animation 
                     </p>
-                </form>     
+                </form>    
+                <div id="validacoesTxt">
+                    <p class="text-red-500" *ngIf="bordaVermelhaNome == true">
+                        Preencha um Nome válido!
+                    </p>
+                    <p class="text-red-500" *ngIf="bordaVermelhaEmail == true">
+                        Preencha um Email válido! 
+                    </p>
+                    <p class="text-red-500" *ngIf="bordaVermelhaSenha == true">
+                        Preencha uma senha forte!
+                    </p>
+                    <p class="text-red-500" *ngIf="bordaVermelhaConfirmarSenha == true">
+                        As senhas não coincidem.
+                    </p>
+                </div> 
             </div>
             
         </div>        

@@ -1,57 +1,133 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ConfigureStorage } from 'src/app/model/config-storage';
+import { StatusEnum } from 'src/app/model/enum/StatusEnum';
 import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
 import { RealizarLoginDTO } from 'src/app/model/request/RealizarLoginDTO';
+import { Alerta } from 'src/app/model/response/alerta';
 import { AutenticarService } from 'src/app/service/autenticar/autenticar.service';
+import { ConfigStorageService } from 'src/app/service/config-storage/config-storage.service';
 import { LocalStorageUtils } from 'src/app/service/local-storage/LocalStorageUtils';
 
 @Component({
   selector: 'app-entrar',
   templateUrl: './entrar.component.html',
-  styleUrls: ['./entrar.component.scss']
-})
+  styleUrls: ['./entrar.component.scss'],
+  animations: [
+    trigger('alert', [
+      state('void', style({ opacity: 0 })),
+      transition('void <=> *', animate(500)),
+    ]),
+  ]})
+
+
 export class EntrarComponent implements OnInit {
   
   public LocalStorage = new LocalStorageUtils();
-
   constructor(
+    private router: Router,
+    private  configStorageService : ConfigStorageService,
     private autenticarService : AutenticarService,
     private formBuilder: FormBuilder// NonNullableFormBuilder
   ) { }
-  
+    mostrarAlertaToast : boolean = false;
     formularioLogin = this.formBuilder.group({
       email: [''],
       senha: [''],
     });
 
-  ngOnInit(): void {
 
+    showAlert = false;
+    alerta : Alerta = {
+      titulo: "Carregando",
+      texto: "...",
+      tipoAlerta: StatusEnum.INICIO,
+      dados: "",
+      status: 0,
+      mostrar: false
+    }
+
+  ngOnInit(): void {
+    this.configStorageService.aplicarTema();
+    //this.idioma = this.configStorageService.obterIdioma();
   }
-    realizarLogin(): any {
+
+  invalidLogin() {
+    this.showAlert = true;
+    setTimeout(() => (this.showAlert = false), 6000);
+  }
+
+  realizarLogin(): any {
 
       var loginModel : RealizarLoginDTO = {
         email: this.formularioLogin?.value?.email!,
         senha: this.formularioLogin?.value?.senha!,
+        jwt: ""
       }
-      var test = this.LocalStorage.obtenInformacoesUsuario();
-      this.autenticarService.login(loginModel)
-      .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
+      if(loginModel.email.toString() === "")
+      {
+        alert('Digite um login e uma senha !');
+        return;
       }
-      falhouSubmeter(error: any): void {
-        alert("ERR"+error+ JSON.parse(error).toString()
-        + JSON.stringify(error).toString());
-      }
-      sucessoSubmeter(): void {
-        var autenticarUsuarioModel : RealizarLoginDTO = {
-          email: this.formularioLogin?.value?.email!,
-          senha: this.formularioLogin?.value?.senha!,
+      if(loginModel?.email != undefined){
+        if(loginModel?.senha != undefined){
+          this.LocalStorage.obtenInformacoesUsuario();
+          this.autenticarService.login(loginModel)
+          .subscribe(resultado => this.sucessoSubmeter(resultado), error => this.falhouSubmeter(error));
         }
-        this.LocalStorage.salvarInformacoesPerfil(autenticarUsuarioModel);
-        alert("OK");
+
+        
+        
+      }else{
+
+        alert('vazio');
+      }
+    }
+    falhouSubmeter(error: any): void {
+        var alerta : Alerta = {
+          titulo: error?.error.titulo.toString(),
+          dados: "",
+          status: 400,
+          texto: "Não foi possível identificar usuário.",
+          tipoAlerta: StatusEnum.ERRO,
+          mostrar : true
+    }
+    this.setAlertaToast(alerta);
+    this.invalidLogin();
+    alert("ERR"+error+ JSON.parse(error).toString()
+        + JSON.stringify(error).toString());
+    }
+    sucessoSubmeter(resultado: any): void {
+      var jwt = "";
+      if(resultado != undefined )
+      {
+        jwt = JSON.stringify(resultado);
+      }
+      var autenticarUsuarioModel : RealizarLoginDTO = {
+        email: this.formularioLogin?.value?.email!,
+        senha: this.formularioLogin?.value?.senha!,
+        jwt: jwt.toString()
+      }
+      this.LocalStorage.salvarInformacoesPerfil(JSON.stringify(autenticarUsuarioModel));
+
+ 
+      this.router.navigate(['networking']);
+  
       }
 
     logar(){
       alert(this.formularioLogin?.value?.email?.toString());
+  }
+
+  setAlertaToast(alerta : Alerta)
+  {
+    this.alerta.titulo = alerta.titulo;
+    this.alerta.texto = alerta.texto;
+    this.alerta.tipoAlerta = alerta.tipoAlerta;
+    this.alerta.dados = alerta.dados;
+    this.alerta.status = alerta.status;  
   }
 }
 

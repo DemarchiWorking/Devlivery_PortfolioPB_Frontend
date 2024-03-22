@@ -3,6 +3,12 @@ h1 {
     color: red;
     font-weight: 700;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 
 /* Navbar styles */
 .navbar {
