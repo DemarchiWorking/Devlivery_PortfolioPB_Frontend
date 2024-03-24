@@ -59,7 +59,8 @@ export class CadastroProjetoComponent implements OnInit {
   }
 
   cadastrarNovoProjeto() {
-    var request : CadastroProjetoModel =  
+
+/*    var request : CadastroProjetoModel =  
     {
       "titulo" : "TEST",
       "objetivo" : "TEST",
@@ -69,7 +70,6 @@ export class CadastroProjetoComponent implements OnInit {
       "link" : "ASDSAD",
       "usuarioId": "1"
     }
-/*
     var test = this.projectService.cadastrarProjeto(request).subscribe(
     (response) => {
       console.log('Projeto cadastrado com sucesso!', response);

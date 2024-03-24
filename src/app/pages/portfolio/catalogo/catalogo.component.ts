@@ -14,7 +14,11 @@ export class CatalogoComponent implements OnInit {
   //public localStorage = new LocalStorageUtils();
   formularioProjeto = this.formBuilder.group({
     titulo: [''],
+    objetivo: [''],
     descricao: [''],
+    link: [''],
+   // valor: [''],
+    foto: [''],
   })
   
   idioma : string = "pt";
@@ -48,18 +52,18 @@ export class CatalogoComponent implements OnInit {
   }
 
   cadastrarNovoProjeto(): any {
-    var projeto : CadastroProjetoModel =  
-    {
-      "titulo" : "TEST",
-      "objetivo" : "TEST",
-      "descricao" : "TEST",
-      "foto" : "TEST",
-      "valor" : 222,
-      "link" : "ASDSAD",
-      "usuarioId": "test"
+    var novoProjeto : CadastroProjetoModel = {
+      titulo: this.formularioProjeto?.value?.titulo!,
+      objetivo: this.formularioProjeto?.value?.objetivo!, 
+      descricao: this.formularioProjeto?.value?.descricao!,
+      foto: this.formularioProjeto?.value?.foto!,
+     // valor: this.formularioProjeto?.value?.valor!,
+      link: this.formularioProjeto?.value?.link!,
+      usuarioId: ""
     }
+    alert(novoProjeto!.titulo.toString())
 
-    this.projetoService.cadastrarProjeto(projeto)
+    this.projetoService.cadastrarProjeto(novoProjeto)
     .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
     }
     falhouSubmeter(error: any): void {

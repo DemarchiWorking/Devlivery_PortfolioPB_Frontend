@@ -4,7 +4,6 @@ export interface Projeto {
   objetivo: string;
   descricao: string;
   foto: string;
-  valor: number;
   link: string;
   usuarioid: string;
 }

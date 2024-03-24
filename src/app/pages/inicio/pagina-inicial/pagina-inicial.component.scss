@@ -1,0 +1,55 @@
+.arrow {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    fill: #007bff; /* Cor da seta (azul) */
+    transition: transform 0.5s ease; /* Animação de rotação */
+    animation: bounce 0.7s infinite alternate; /* Animação de movimento */
+}
+  
+  /* Estilo para a animação */
+  .arrow.active {
+    transform: rotate(180deg) translateY(10px); /* Rotação e movimento para baixo quando ativa */
+  }
+
+  @keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px); /* Movimento para baixo */
+  }
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .cards-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card {
+    width: 300px; /* Ajuste o tamanho conforme necessário */
+    margin-right: 20px; /* Espaçamento entre os cards */
+  }
+  
+
+  .hidden {
+    display: none;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-container img {
+    float: right; /* Alinha a imagem à direita */
+    margin-left: 10px; /* Adicione margem à esquerda para separar da div */
+}
