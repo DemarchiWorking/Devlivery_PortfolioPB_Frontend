@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
+import { Sessao, SessaoUsuario } from 'src/app/model/sessao';
 import { ConfigStorageService } from 'src/app/service/config-storage/config-storage.service';
+import { LocalStorageUtils } from 'src/app/service/local-storage/LocalStorageUtils';
 import { ProjetoService } from 'src/app/service/projeto/projeto.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { ProjetoService } from 'src/app/service/projeto/projeto.service';
 })
 export class CatalogoComponent implements OnInit {
 
-  //public localStorage = new LocalStorageUtils();
+  public localStorage = new LocalStorageUtils();
   formularioProjeto = this.formBuilder.group({
     titulo: [''],
     objetivo: [''],
@@ -19,6 +21,7 @@ export class CatalogoComponent implements OnInit {
     link: [''],
    // valor: [''],
     foto: [''],
+    jwt: ['']
   })
   
   idioma : string = "pt";
@@ -52,23 +55,31 @@ export class CatalogoComponent implements OnInit {
   }
 
   cadastrarNovoProjeto(): any {
-    var novoProjeto : CadastroProjetoModel = {
+
+    var jwt : any = this.localStorage.getLocalStorageJWT();
+
+
+    var novoProjeto : any = {
       titulo: this.formularioProjeto?.value?.titulo!,
       objetivo: this.formularioProjeto?.value?.objetivo!, 
       descricao: this.formularioProjeto?.value?.descricao!,
       foto: this.formularioProjeto?.value?.foto!,
      // valor: this.formularioProjeto?.value?.valor!,
       link: this.formularioProjeto?.value?.link!,
-      usuarioId: ""
+      usuarioId: "",
+      jwt: jwt
     }
-    alert(novoProjeto!.titulo.toString())
+    
+    var tokenJWT : SessaoUsuario = jwt;
+    //console.log(JSON.stringify(JSON.parse(tokenJWT.jwt.toString()).token));
+    novoProjeto.jwt = jwt; 
 
     this.projetoService.cadastrarProjeto(novoProjeto)
     .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
     }
+
     falhouSubmeter(error: any): void {
-      alert("ERR"+error+ JSON.parse(error).toString()
-      + JSON.stringify(error).toString());
+      alert("ERRO"+error + JSON.stringify(error).toString());
     }
     sucessoSubmeter(): void {
       alert("OK");

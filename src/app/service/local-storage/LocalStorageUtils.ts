@@ -1,4 +1,5 @@
 import { ConfigureStorage } from "src/app/model/config-storage";
+import { Sessao } from "src/app/model/sessao";
 
 export class LocalStorageUtils {
 
@@ -60,5 +61,12 @@ export class LocalStorageUtils {
             'idioma' : configLocalStorage!.idioma, 
         }
         return configuracao;
+    }
+
+    public getLocalStorageJWT(){
+        var identidade : any = localStorage!.getItem('identidade.informacoes');
+        var jwt : Sessao = JSON.parse(identidade);
+
+        return  jwt;
     }
 }

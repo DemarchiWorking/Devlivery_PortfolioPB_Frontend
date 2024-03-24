@@ -130,7 +130,7 @@ export class RegistrarComponent implements OnInit {
         mostrar: true,
       }
       this.setAlertaToast(alerta);
-      cadastro.jwt = JSON.stringify(resultado);
+      cadastro.jwt = resultado;
       this.configStorageService.LocalStorage.salvarInformacoesPerfil(JSON.stringify(cadastro));
         
       //private route: ActivatedRoute, 
