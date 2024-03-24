@@ -13,6 +13,10 @@ export class ConfigStorageService {
   
   aplicarTema(): void {
     var config: ConfigureStorage | undefined = this.LocalStorage.getConfiguracoes();
+    if(config.tema == undefined)
+    {
+      config.tema = false;
+    }
     document.body.classList.toggle('dark', config?.tema);
   
   

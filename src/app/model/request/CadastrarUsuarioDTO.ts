@@ -4,4 +4,5 @@ export interface CadastroUsuarioDTO {
     senha: string;
     telefone: string;
     confirmarSenha: string;
+    jwt: string;
   }

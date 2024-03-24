@@ -43,13 +43,11 @@
     display: none;
   }
 
-  .image-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.image-container img {
-    float: right; /* Alinha a imagem à direita */
-    margin-left: 10px; /* Adicione margem à esquerda para separar da div */
+  .background-div {
+    background-image: url('../../../../assets/images/EngenhariaSimboloPNG.png'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover; /* Redimensiona a imagem para preencher todo o espaço da div */
+    background-repeat: round;
+    /* Outros estilos da sua div aqui */
+    width: 100%;
+    height: 100vh; /* Define a altura da div (100% da altura da viewport) */
 }

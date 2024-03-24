@@ -84,14 +84,12 @@ export class RegistrarComponent implements OnInit {
       email: this.formularioCadastro?.value?.email!,
       senha: this.formularioCadastro?.value?.senha!,
       confirmarSenha: this.formularioCadastro?.value?.confirmarSenha!,
+      jwt: ""
     }
     if (this.formularioCadastro.valid) {
 
-        var test = this.localStorageService.set('usuario', JSON.stringify(cadastroUsuario));
-        this.autenticarService.registrar(cadastroUsuario)
-        .subscribe(resultado => this.sucessoSubmeter(resultado), error => this.falhouSubmeter(error));
-        
-
+      this.autenticarService.registrar(cadastroUsuario)
+        .subscribe(resultado => this.sucessoSubmeter(resultado, cadastroUsuario), error => this.falhouSubmeter(error));
 
       }
       else{
@@ -121,7 +119,7 @@ export class RegistrarComponent implements OnInit {
       //+ JSON.stringify(error).toString());
       // this.errorMessage = error.error; // Cap
     }
-    sucessoSubmeter(resultado: any): void {
+    sucessoSubmeter(resultado: any, cadastro: CadastroUsuarioDTO): void {
       alert(JSON.stringify(resultado));
       var alerta : Alerta = {
         titulo: "Cadastro Usuario Sucesso",
@@ -132,6 +130,9 @@ export class RegistrarComponent implements OnInit {
         mostrar: true,
       }
       this.setAlertaToast(alerta);
+      cadastro.jwt = JSON.stringify(resultado);
+      this.configStorageService.LocalStorage.salvarInformacoesPerfil(JSON.stringify(cadastro));
+        
       //private route: ActivatedRoute, 
       this.router.navigate(['networking']);
     }
