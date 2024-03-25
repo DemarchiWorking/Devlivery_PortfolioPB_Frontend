@@ -11,9 +11,12 @@ import { Sessao } from 'src/app/model/sessao';
 })
 export class AuthInterceptorService {
   public LocalStorage = new LocalStorageUtils();
+  public TokenJwt : LocalStorageService = new LocalStorageService();
+
   constructor(
     private authService: AutenticarService,
-      ) { }
+      ) {
+       }
    
   intercept(req: HttpRequest<any>, next: HttpHandler, jwt : string): Observable<HttpEvent<any>> {
     var identidade : any = localStorage!.getItem('identidade.informacoes');
@@ -21,7 +24,7 @@ export class AuthInterceptorService {
     //var tokenJWT : any = this.LocalStorage.getLocalStorageJWT();
 
     const token = tokenJWT.jwt.token;
-
+    console.log(" intercep : "+token);
 
 
 

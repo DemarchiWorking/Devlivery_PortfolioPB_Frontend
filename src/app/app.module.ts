@@ -37,6 +37,7 @@ import { EntrarComponent } from './pages/inicio/entrar/entrar.component';
 import { RegistrarComponent } from './pages/inicio/registrar/registrar.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { AuthInterceptorService } from './service/autenticar/auth-interceptor.service';
+import { ListaNegociosComponent } from './pages/negocio/lista-negocios/lista-negocios.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { AuthInterceptorService } from './service/autenticar/auth-interceptor.se
     RegistrarComponent,
     AmizadeComponent,
     ToastComponent,
+    ListaNegociosComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,10 +35,10 @@ export class PaginaInicialComponent implements OnInit {
   terceiraCapaCarrousel : string = "https://www.integrasist.com.br/dados/editor/image/WhatsApp_Image_2021_04_05_at_21.13.13.jpeg";
   
   public cards : any = [
-    {titulo: 'Consultoria Negócio', descricao: ' Materialize uma ideia em um processo intenso de ideação, validação e planejamento de produto - Product Discovery .', image: 'https://img.freepik.com/fotos-gratis/empresarios-de-planejamento-em-uma-parede-de-vidro_53876-15194.jpg?t=st=1711235008~exp=1711238608~hmac=0d3e1960d88acc14bae767fbbeccca022e34a1837215f9a024502a080543a122&w=1380'},
+    {titulo: 'Gestão de Processos', descricao: ' Materialize uma ideia em um processo intenso de ideação, validação e planejamento de produto - Product Discovery .', image: 'https://img.freepik.com/fotos-gratis/empresarios-de-planejamento-em-uma-parede-de-vidro_53876-15194.jpg?t=st=1711235008~exp=1711238608~hmac=0d3e1960d88acc14bae767fbbeccca022e34a1837215f9a024502a080543a122&w=1380'},
     {titulo: 'Design Interface', descricao: ' Conte com nosso time de FrontEnd para aplicar revisões e melhorias de fluxos e interfaces.', image: 'https://img.freepik.com/fotos-gratis/representacao-da-experiencia-do-utilizador-e-design-da-interface_23-2150169847.jpg?w=1380&t=st=1711235882~exp=1711236482~hmac=c511277f9ce7dde573e643bfc57f57ac41df1f64027b4468a47a087793795253'},
-    {titulo: 'Backend', descricao: 'Potencialize suas entregas de tecnologia com o nosso time de especialistas.', image: 'https://img.freepik.com/fotos-gratis/conceito-de-rpa-com-tela-de-toque-de-mao-embacada_23-2149311914.jpg?t=st=1711235985~exp=1711239585~hmac=6b253bee419e250a5323c50d8073b9cda15a732b35c4a62d01be6c778bb0f475&w=1380'},
-    {titulo: 'Integração ', descricao: ' Conectamos você diretamente aos alunos cujos projetos mais chamaram sua atenção..', image: 'https://d69wugzumdc3j.cloudfront.net/064/de-maos-dadas-maquina-e-o-ser-humano.jpg'}
+    {titulo: 'Regras de Negócio', descricao: 'Potencialize suas entregas de tecnologia com o nosso time de especialistas.', image: 'https://img.freepik.com/fotos-gratis/conceito-de-rpa-com-tela-de-toque-de-mao-embacada_23-2149311914.jpg?t=st=1711235985~exp=1711239585~hmac=6b253bee419e250a5323c50d8073b9cda15a732b35c4a62d01be6c778bb0f475&w=1380'},
+    {titulo: 'Integrações ', descricao: ' Conectamos você diretamente aos alunos cujos projetos mais chamaram sua atenção..', image: 'https://d69wugzumdc3j.cloudfront.net/064/de-maos-dadas-maquina-e-o-ser-humano.jpg'}
   ] 
 
   public items: string[] = [];

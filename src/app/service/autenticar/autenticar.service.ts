@@ -19,4 +19,11 @@ export class AutenticarService {
     var headers = new HttpHeaders().set('Authorization', '');
     return this.http.post<any>(this.apiUrl+"/identidade/cadastrar-usuario", usuarioModel ,  { headers }).pipe(first());
   }
+
+  parseAnyInToken(any : any){
+    return JSON.stringify(any.jwt.jwt.token);
+  }
+    parseAnyInTokenNN(any : any){
+    return JSON.stringify(any.jwt.jwt.token);
+  }
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Projeto } from 'src/app/model/projeto';
 import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
 import { Sessao, SessaoUsuario } from 'src/app/model/sessao';
+import { AutenticarService } from 'src/app/service/autenticar/autenticar.service';
 import { ConfigStorageService } from 'src/app/service/config-storage/config-storage.service';
 import { LocalStorageUtils } from 'src/app/service/local-storage/LocalStorageUtils';
 import { ProjetoService } from 'src/app/service/projeto/projeto.service';
@@ -14,12 +17,18 @@ import { ProjetoService } from 'src/app/service/projeto/projeto.service';
 export class CatalogoComponent implements OnInit {
 
   public localStorage = new LocalStorageUtils();
+  public listaProjetos: any = [
+    {"lIVRO": "test"},
+    {"test1": "test1"},
+    {"test3": "test3"},
+  ];
+
   formularioProjeto = this.formBuilder.group({
     titulo: [''],
     objetivo: [''],
     descricao: [''],
     link: [''],
-   // valor: [''],
+    valor: [''],
     foto: [''],
     jwt: ['']
   })
@@ -27,15 +36,52 @@ export class CatalogoComponent implements OnInit {
   idioma : string = "pt";
   finalFormulario : boolean = false;
   idiomaService: any;
+  tokenJWT : any;
+  public catalogoProjetos : Projeto[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private projetoService: ProjetoService,
     private  configStorageService : ConfigStorageService,
+    private router: Router,
+    private authService : AutenticarService
     ) { }
 
   ngOnInit(): void {
     this.configStorageService.aplicarTema();
+    this.catalogoProjetos = this.obterProjetos();
+  }
+
+  obterProjetos() : any
+  {
+    var jwt : any = this.localStorage.getLocalStorageJWT();
+
+    var parseToken = JSON.stringify(jwt.jwt.token);
+    this.tokenJWT = parseToken
+    
+
+    //var tokenJWT : any = jwt;
+    //console.log("jw"+ this.authService.parseAnyInToken(tokenJWT) )
+    //console.log("jw"+ this.authService.parseAnyInTokenNN(jwt))
+    var respostaCadastro = this.projetoService.obterProjetos(this.tokenJWT)
+    .subscribe(resultado => 
+      {
+        this.catalogoProjetos = resultado;
+        alert(resultado)
+        alert(JSON.stringify(resultado[0]))
+
+        return resultado;
+      }
+      , error =>
+      {
+
+        alert("err")
+        return null;
+      }
+      );
+
+    console.log(respostaCadastro);
+    console.log(respostaCadastro.unsubscribe);
   }
 
   submeterProjeto(){
@@ -58,9 +104,6 @@ export class CatalogoComponent implements OnInit {
 
     var jwt : any = this.localStorage.getLocalStorageJWT();
 
-    alert(jwt);
-    console.log(jwt);
-
     var novoProjeto : CadastroProjetoModel = {
       projetoId: "",
       titulo: this.formularioProjeto?.value?.titulo!,
@@ -78,15 +121,19 @@ export class CatalogoComponent implements OnInit {
     novoProjeto.jwt = jwt; 
 
     
-    this.projetoService.cadastrarProjeto(novoProjeto)
+    var respostaCadastro = this.projetoService.cadastrarProjeto(novoProjeto)
     .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
-    }
+
+    //if(respostaCadastro.)
+  }
+
 
     falhouSubmeter(error: any): void {
-      alert("ERRO"+error + JSON.stringify(error).toString());
+      alert("ERRO"+ error);
     }
     sucessoSubmeter(): void {
-      alert("OK");
+      alert("Sucesso ao cadastrar Projeto");
+      this.router.navigate(['catalogo']);
     }
 
 }

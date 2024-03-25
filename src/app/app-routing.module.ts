@@ -10,6 +10,7 @@ import { AmizadeComponent } from './pages/networking/amizade/amizade.component';
 import { PaginaInicialComponent } from './pages/inicio/pagina-inicial/pagina-inicial.component';
 import { EntrarComponent } from './pages/inicio/entrar/entrar.component';
 import { RegistrarComponent } from './pages/inicio/registrar/registrar.component';
+import { ListaNegociosComponent } from './pages/negocio/lista-negocios/lista-negocios.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'negocio', component: NegocioComponent },
   { path: 'networking', component: NetworkingComponent },
   { path: 'networking/conexoes', component: AmizadeComponent },
+  { path: 'negocio/lista', component: ListaNegociosComponent },
 ];
 
 @NgModule({
