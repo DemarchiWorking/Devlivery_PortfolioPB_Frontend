@@ -58,13 +58,16 @@ export class CatalogoComponent implements OnInit {
 
     var jwt : any = this.localStorage.getLocalStorageJWT();
 
+    alert(jwt);
+    console.log(jwt);
 
-    var novoProjeto : any = {
+    var novoProjeto : CadastroProjetoModel = {
+      projetoId: "",
       titulo: this.formularioProjeto?.value?.titulo!,
       objetivo: this.formularioProjeto?.value?.objetivo!, 
       descricao: this.formularioProjeto?.value?.descricao!,
       foto: this.formularioProjeto?.value?.foto!,
-     // valor: this.formularioProjeto?.value?.valor!,
+      valor: 0,
       link: this.formularioProjeto?.value?.link!,
       usuarioId: "",
       jwt: jwt
@@ -74,6 +77,7 @@ export class CatalogoComponent implements OnInit {
     //console.log(JSON.stringify(JSON.parse(tokenJWT.jwt.toString()).token));
     novoProjeto.jwt = jwt; 
 
+    
     this.projetoService.cadastrarProjeto(novoProjeto)
     .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
     }

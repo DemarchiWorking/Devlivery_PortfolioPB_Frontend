@@ -100,21 +100,19 @@ export class EntrarComponent implements OnInit {
         + JSON.stringify(error).toString());
     }
     sucessoSubmeter(resultado: any): void {
-      var jwt = "";
-      if(resultado != undefined )
-      {
-        jwt = JSON.stringify(resultado);
-      }
+      
+      var jwt = JSON.stringify(resultado);
+      console.log("aaaq"+jwt)
+    
       var autenticarUsuarioModel : RealizarLoginDTO = {
         email: this.formularioLogin?.value?.email!,
         senha: this.formularioLogin?.value?.senha!,
-        jwt: jwt.toString()
+        jwt: JSON.parse(jwt)
       }
+      //alert(jwt);
+      //console.log(JSON.parse(jwt.token.toString()));
       this.LocalStorage.salvarInformacoesPerfil(JSON.stringify(autenticarUsuarioModel));
-
- 
       this.router.navigate(['networking']);
-  
       }
 
     logar(){

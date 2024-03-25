@@ -26,7 +26,7 @@ import { IdiomaComponent } from './components/idioma/idioma.component';
 import { CadastroProjetoComponent } from './pages/portfolio/cadastro-projeto/cadastro-projeto.component';
 import { BotaoTemComponent } from './pages/portfolio/botao-tem/botao-tem.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { CatalogoComponent } from './pages/portfolio/catalogo/catalogo.component';
 import { AmizadeComponent } from './pages/networking/amizade/amizade.component';
 import { NetworkingComponent } from './pages/networking/networking/networking.component';
@@ -36,6 +36,7 @@ import { ProjetoDetalheComponent } from './pages/portfolio/projeto-detalhe/proje
 import { EntrarComponent } from './pages/inicio/entrar/entrar.component';
 import { RegistrarComponent } from './pages/inicio/registrar/registrar.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { AuthInterceptorService } from './service/autenticar/auth-interceptor.service';
 
 
 @NgModule({
@@ -83,7 +84,9 @@ import { ToastComponent } from './components/toast/toast.component';
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

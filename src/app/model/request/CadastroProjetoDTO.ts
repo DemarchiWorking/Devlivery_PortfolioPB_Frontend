@@ -7,12 +7,11 @@ export interface CadastroProjetoModel {
     valor: number;
     link: string;
     usuarioId: string;
-    jwt: JWT
+    jwt: {
+      autenticado: boolean;
+      expiracao: string;
+      token: string;
+      mensagem: string;
+      usuario: string;
+    };
   }
-  export interface JWT {
-    autenticado: boolean;
-    expiracao: string;
-    token: string;
-    mensagem: string;
-    usuario: string;
-  };
