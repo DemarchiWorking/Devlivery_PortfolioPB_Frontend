@@ -22,18 +22,19 @@
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white ">Catalogo de Soluções</h1>
         <ol>
             <li *ngFor="let proj of catalogoProjetos" >
+                
+                    <p class="text-base font-semibold text-gray-900">  {{ proj.titulo }}  </p>
                 <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
                 <div class="group relative">
                     <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img src="{{ proj.foto }} " alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug." class="h-full w-full object-cover object-center">
                     </div>
                     <h3 class="mt-6 text-sm text-gray-500">
-                    <a href="#">
-                        <span class="absolute inset-0"></span>
-                        Desk and Office
-                    </a>
-                    </h3>
-                    <p class="text-base font-semibold text-gray-900">Work from home accessories</p>
+                        <a href="#">
+                            <span class="absolute inset-0"></span>
+                            Aluno: Antonio Demarchi
+                        </a>
+                        </h3>
                 </div>
 
                 <div class="group relative">
@@ -43,6 +44,7 @@
                     
                     <p class="text-black dark:text-white"> <u>Descrição</u> : {{proj.descricao }}  </p>
                     <a href="{{ proj.link }}" class="text-blue-600" target="_blank"> <u>Link</u> : {{ proj.link }}  </a>
+                    
                     </div>
                 </div>
                 <div class="group relative">
@@ -57,18 +59,25 @@
                             <p class="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400"> <u>Objetivo</u>: {{ proj.objetivo }}</p>
                             <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                 <a href="#" class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-                                    Detalhes
+                                    <img class="w-16 h-16" src="../../../../assets/images/detalhe.png">
+                                    <br><p>Detalhes</p>
                                 </a>
                                 <a href="#" class="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                                    <svg class="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path></svg>
-                                    Proposta
+                                    <!--<svg class="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path></svg>-->
+                                    <img class="w-16 h-16" src="../../../../assets/images/proposta.png">
+                                    <br><p>Proposta</p>
                                 </a>  
                             </div>
                         </div>
                     </div>
                 </section>
                 </div>
-                    
+                <h3 class="mt-6 text-sm text-gray-500">
+                    <a href="#">
+                        <span class="absolute inset-0"></span>
+                        {{ proj.titulo }}
+                    </a>
+                    </h3>
                 </div>
                 </div>
             </li>
