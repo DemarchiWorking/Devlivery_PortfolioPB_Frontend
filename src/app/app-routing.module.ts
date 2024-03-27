@@ -11,6 +11,7 @@ import { PaginaInicialComponent } from './pages/inicio/pagina-inicial/pagina-ini
 import { EntrarComponent } from './pages/inicio/entrar/entrar.component';
 import { RegistrarComponent } from './pages/inicio/registrar/registrar.component';
 import { ListaNegociosComponent } from './pages/negocio/lista-negocios/lista-negocios.component';
+import { NegocioDetalheComponent } from './pages/negocio/negocio-detalhe/negocio-detalhe.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'networking', component: NetworkingComponent },
   { path: 'networking/conexoes', component: AmizadeComponent },
   { path: 'negocio/lista', component: ListaNegociosComponent },
+  { path: 'negocio/detalhe', component: NegocioDetalheComponent },
 ];
 
 @NgModule({
