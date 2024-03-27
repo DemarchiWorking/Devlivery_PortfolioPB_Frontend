@@ -87,6 +87,8 @@ export class ListaNegociosComponent implements OnInit {
       var idioma = this.idiomaService.obterIdioma();
     }
 
-
-
+    redirecionar(url :string)
+    {
+      this.router.navigate([url]);
+    }
 }

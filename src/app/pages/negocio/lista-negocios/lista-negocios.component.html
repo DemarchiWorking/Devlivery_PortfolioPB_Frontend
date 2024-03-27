@@ -366,7 +366,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let negocio of catalogoNegocios" class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <tr (click)="redirecionar('negocio/detalhe')" style="cursor:pointer;" *ngFor="let negocio of catalogoNegocios" class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                             <td class="p-4 w-4">
                                 <div class="flex items-center">
                                     <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -375,7 +375,7 @@
                             </td>
                             <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <div class="flex items-center mr-3">
-                                    <img src="../../../../assets/images/loja.png" alt="iMac Front Image" class="h-8 w-auto mr-3">
+                                    <img src="../../../../assets/images/loja.png" alt="" class="h-8 w-auto mr-3">
                                     {{negocio.nome}} &#34;
                                 </div>
                             </th>
