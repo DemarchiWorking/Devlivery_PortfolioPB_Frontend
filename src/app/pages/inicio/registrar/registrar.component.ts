@@ -78,6 +78,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   realizarCadastro(): any {
+
     var cadastroUsuario : CadastroUsuarioDTO = {
       nome: this.formularioCadastro?.value?.nome!,
       telefone: this.formularioCadastro?.value?.telefone!, 
@@ -87,9 +88,9 @@ export class RegistrarComponent implements OnInit {
       jwt: ""
     }
     if (this.formularioCadastro.valid) {
-
+      alert(JSON.stringify(cadastroUsuario));
       this.autenticarService.registrar(cadastroUsuario)
-        .subscribe(resultado => this.sucessoSubmeter(resultado, cadastroUsuario), error => this.falhouSubmeter(error));
+        .subscribe(resultado => this.sucessoSubmeter(resultado, cadastroUsuario),  error => this.falhouSubmeter(error));
 
       }
       else{
@@ -99,6 +100,7 @@ export class RegistrarComponent implements OnInit {
     }
     falhouSubmeter(error: any ): void {
 
+      alert(JSON.stringify(error));
       var alerta : Alerta = {
         titulo: error?.error.titulo.toString(),
         dados: "",
@@ -108,7 +110,6 @@ export class RegistrarComponent implements OnInit {
         mostrar: true,
       }
 
-      
       this.setAlertaToast(alerta);
       //this.alerta = this.setAlertaToast();
         // Exibir os dados em um alerta

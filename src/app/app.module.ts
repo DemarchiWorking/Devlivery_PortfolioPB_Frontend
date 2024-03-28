@@ -39,6 +39,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { AuthInterceptorService } from './service/autenticar/auth-interceptor.service';
 import { ListaNegociosComponent } from './pages/negocio/lista-negocios/lista-negocios.component';
 import { NegocioDetalheComponent } from './pages/negocio/negocio-detalhe/negocio-detalhe.component';
+import { TabComponent } from './pages/negocio/negocio-detalhe/tab/tab.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { NegocioDetalheComponent } from './pages/negocio/negocio-detalhe/negocio
     ToastComponent,
     ListaNegociosComponent,
     NegocioDetalheComponent,
+    TabComponent,
   ],
   imports: [
     BrowserModule,

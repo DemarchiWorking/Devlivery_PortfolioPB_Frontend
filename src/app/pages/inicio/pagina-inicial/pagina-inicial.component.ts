@@ -84,7 +84,7 @@ export class PaginaInicialComponent implements OnInit {
     this.currentIndex = (this.currentIndex + 1) % this.numCards;
   }
 
-  redirecionar(){
-    this.router.navigate(['catalogo']);
+  redirecionar(url : string){
+    this.router.navigate([url]);
   }
 }

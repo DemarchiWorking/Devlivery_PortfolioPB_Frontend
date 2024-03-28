@@ -11,5 +11,6 @@ export class NegocioDetalheComponent implements OnInit {
 
   ngOnInit(): void {
   }
+// Função para alternar a guia ativa
 
 }

@@ -1,0 +1,33 @@
+#default-tab button[aria-selected="true"] {
+    background-color: #0074d9;
+    color: #ffffff;
+    /* Adicione outros estilos conforme necessário */
+}
+
+.fundo-toldo {
+    /* Define a imagem que você deseja usar como background */
+    background-image: url('../../../../assets/images/fundo-toldo-negocio.png');
+    
+    /* Define o tamanho e a posição da imagem */
+    background-size: cover; /* Ajusta a imagem para cobrir todo o espaço da div */
+    background-position: center; /* Centraliza a imagem na div */
+    background-color: transparent;
+    /* Outras propriedades opcionais */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+  }
+
+  
+@keyframes slide-right {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animate-slide-right {
+  animation: slide-right 2s ease-out;
+}

@@ -25,6 +25,7 @@ export class LocalStorageUtils {
     }
 
     public salvarInformacoesPerfil(request: any){
+        alert(request)
         localStorage.setItem('identidade.informacoes', request)
     }
 
