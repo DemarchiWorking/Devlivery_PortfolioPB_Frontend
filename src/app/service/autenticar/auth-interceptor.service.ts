@@ -15,16 +15,36 @@ export class AuthInterceptorService {
 
   constructor(
     private authService: AutenticarService,
-      ) {
-       }
-   
+      )
+      {
+      }
+
   intercept(req: HttpRequest<any>, next: HttpHandler, jwt : string): Observable<HttpEvent<any>> {
     var identidade : any = localStorage!.getItem('identidade.informacoes');
-    var tokenJWT : Sessao = JSON.parse(identidade);
+    var tokenJWT : Sessao ;
+    if(identidade != null && identidade != undefined)
+    {
+      tokenJWT = JSON.parse(identidade);
+    }else{
+      tokenJWT = {
+        nome: "",
+        email: "",
+        confirmarsenha: "",
+        senha: "",
+        telefone: "",
+        jwt : {
+            autenticado: false,
+            expiracao: "",
+            mensagem: "",
+            token: "",
+            usuario: "",
+        }
+    }
+    }
     //var tokenJWT : any = this.LocalStorage.getLocalStorageJWT();
 
     const token = tokenJWT.jwt.token;
-    console.log(" intercep : "+token);
+    console.log("intercep : "+token);
 
 
 

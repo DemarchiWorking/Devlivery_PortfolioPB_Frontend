@@ -5,18 +5,18 @@
       <img class="h-10 inline"
       src="https://media.licdn.com/dms/image/C560BAQGck_xe9epEgA/company-logo_200_200/0/1655425862496?e=1694649600&v=beta&t=jt9Y8gWF2JkXYJLLxsQQ_7h9Na70_Veuc7LtNwEQj2w">
     </span>-->
-    
-    <img style="width: 6vw; height: 3vw;" class="logo-container" src="../assets/images/logo.png"/> 
+
+    <img style="width: 6vw; height: 3vw;" class="logo-container" src="../assets/images/logo.png"/>
     <p class="pl-4 pt-4" style="font-size: x-large; font-family: monospace;">
-       <h2 class="pt-4"> DEV/LIVERY</h2>
+
     <span class="text-3xl cursor-pointer mx-2 md:hidden block">
           <app-botao-toggle-menu (change)="toggleMenu()"></app-botao-toggle-menu>
      </span>
   </div>
-  <ul class="dark:bg-slate-800 dark:text-white md:flex md:items-center z-[-1] md:z-auto md:static absolute 
+  <ul class="dark:bg-slate-800 dark:text-white md:flex md:items-center z-[-1] md:z-auto md:static absolute
   bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px]
    transition-all ease-in duration-50" [ngClass]="{'top-[80px] opacity-100': isMenu, 'opacity-0': !isMenu  }" style="z-index: 1; transition: 1s;">
-   
+
    <!--
       *ngClass="{'p-10': !isMenu, 'p-5': isMenu }">
       [ngClass]="{'light': !isDarkEnable, 'dark': isDarkEnable }">-->
@@ -25,10 +25,10 @@
       <a href="inicio" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[0] }}  </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="catalogo" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[1] }} </a>
+      <a href="negocio" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[1] }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="negocio" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[2] }} </a>
+      <a href="catalogo" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[2] }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
       <a href="networking" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[3] }} </a>
@@ -37,12 +37,12 @@
       <a href="#" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[4] }}</a>
     </li>
 
-    <a href="login">  
+    <a href="login">
       <button class="text-xl bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
         Entrar
       </button>
     </a>
-   
-    
+
+
   </ul>
 </nav>

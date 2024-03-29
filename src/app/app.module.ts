@@ -40,6 +40,7 @@ import { AuthInterceptorService } from './service/autenticar/auth-interceptor.se
 import { ListaNegociosComponent } from './pages/negocio/lista-negocios/lista-negocios.component';
 import { NegocioDetalheComponent } from './pages/negocio/negocio-detalhe/negocio-detalhe.component';
 import { TabComponent } from './pages/negocio/negocio-detalhe/tab/tab.component';
+import { ListaAlunosComponent } from './pages/networking/lista-alunos/lista-alunos.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { TabComponent } from './pages/negocio/negocio-detalhe/tab/tab.component'
     ListaNegociosComponent,
     NegocioDetalheComponent,
     TabComponent,
+    ListaAlunosComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,7 @@ import { TabComponent } from './pages/negocio/negocio-detalhe/tab/tab.component'
     //MatButtonModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],

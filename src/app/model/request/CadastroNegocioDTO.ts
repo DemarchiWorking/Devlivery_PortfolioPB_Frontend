@@ -1,4 +1,4 @@
-import { JWT } from "./CadastroProjetoModel";
+import { JWT } from "../jwt";
 
 export interface CadastroNegocioDTO {
     negocioId: string;
@@ -9,4 +9,4 @@ export interface CadastroNegocioDTO {
     criacao: Date;
     usuarioId: string;
     jwt: JWT;
-  }    
+  }

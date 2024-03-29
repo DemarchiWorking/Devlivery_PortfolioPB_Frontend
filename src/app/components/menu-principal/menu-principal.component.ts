@@ -6,7 +6,7 @@ import { IdiomaService } from 'src/app/service/idioma/idioma.service';
   selector: 'app-menu-principal',
   templateUrl: './menu-principal.component.html',
   styleUrls: ['./menu-principal.component.scss'],
-  animations: [ 
+  animations: [
     trigger('opacityScale', [
       transition(':enter', [
         style({ opacity: 0, transform: 'scale(.95)' }),
@@ -23,25 +23,25 @@ export class MenuPrincipalComponent implements OnInit {
   isMenu = false;
   isMobileMenu = false;
   idiomaAtual: string = "";
-  menuNavIdioma = ["Inicio", "Catálogo", "Negócios", "Networking", "Contato"];
+  menuNavIdioma = ["Inicio", "Negócios", "Catálogo", "Networking", "Contato"];
 
 
-  constructor(private idiomaService: IdiomaService) 
+  constructor(private idiomaService: IdiomaService)
   { this.idiomaService.idiomaAtual$.subscribe((idioma) => {
     this.idiomaAtual = idioma;
 
     switch(this.idiomaAtual)
     {
       case 'pt':
-        this.menuNavIdioma = ["Inicio", "Catálogo", "Negócios", "Networking", "Contato"];
+        this.menuNavIdioma = ["Inicio",  "Negócios", "Catálogo", "Networking", "Contato"];
         break;
         case 'en':
-        this.menuNavIdioma = ["Home", "Catalog", "Business", "Networking", "Contact"];
+        this.menuNavIdioma = ["Home", "Business", "Catalog" , "Networking", "Contact"];
         break;
       case 'es':
-        this.menuNavIdioma = ["Inicio", "Catálogo", "Negocios", "Redes", "Contacto"];
+        this.menuNavIdioma = ["Inicio", "Negocios",  "Catálogo", "Redes", "Contacto"];
         break;
-      default: 
+      default:
         break;
     }
     // Aqui você pode atualizar o texto do menu conforme o idioma
@@ -50,11 +50,11 @@ export class MenuPrincipalComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-    
+
   toggleMenu(){
       this.isMenu = !this.isMenu;
   }
-  
+
   toggleMobileMenu(){
       this.isMobileMenu = !this.isMobileMenu;
   }
@@ -67,6 +67,5 @@ export class MenuPrincipalComponent implements OnInit {
   // this.texto = this.idiomaService.obterIdioma();
    // alert(" TESTANDO >> "+this.texto);
   }
-  
+
   }
-      

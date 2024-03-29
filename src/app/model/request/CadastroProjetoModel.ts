@@ -1,3 +1,5 @@
+import { JWT } from "../jwt";
+
 export interface CadastroProjetoModel {
     projetoId: "",
     titulo: string;
@@ -9,10 +11,3 @@ export interface CadastroProjetoModel {
     usuarioId: string;
     jwt: JWT
   }
-  export interface JWT {
-    autenticado: boolean;
-    expiracao: string;
-    token: string;
-    mensagem: string;
-    usuario: string;
-  };

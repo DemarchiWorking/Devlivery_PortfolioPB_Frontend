@@ -1,4 +1,4 @@
-import { JWT } from "./request/CadastroProjetoModel";
+import { JWT } from "./jwt";
 
 export interface Negocio {
     negocioId: string;
@@ -10,4 +10,3 @@ export interface Negocio {
     usuarioId: string;
     jwt: JWT;
   }
-  

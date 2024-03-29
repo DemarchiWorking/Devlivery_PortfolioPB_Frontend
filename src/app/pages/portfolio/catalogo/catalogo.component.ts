@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JWT } from 'src/app/model/jwt';
 import { Projeto } from 'src/app/model/projeto';
 import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
 import { Sessao, SessaoUsuario } from 'src/app/model/sessao';
@@ -29,10 +30,9 @@ export class CatalogoComponent implements OnInit {
     descricao: [''],
     link: [''],
     valor: [''],
-    foto: [''],
-    jwt: ['']
+    foto: ['']
   })
-  
+
   idioma : string = "pt";
   finalFormulario : boolean = false;
   idiomaService: any;
@@ -54,34 +54,30 @@ export class CatalogoComponent implements OnInit {
 
   obterProjetos() : any
   {
-    var jwt : any = this.localStorage.getLocalStorageJWT();
 
-    var parseToken = JSON.stringify(jwt.jwt.token);
-    this.tokenJWT = parseToken
-    
-
-    //var tokenJWT : any = jwt;
+    var tokenJWT : JWT =
+    {
+      autenticado : false,
+      expiracao: "",
+      mensagem: "",
+      token: "",
+      usuario: "",
+    };
     //console.log("jw"+ this.authService.parseAnyInToken(tokenJWT) )
     //console.log("jw"+ this.authService.parseAnyInTokenNN(jwt))
-    var respostaCadastro = this.projetoService.obterProjetos(this.tokenJWT)
-    .subscribe(resultado => 
-      {
-        this.catalogoProjetos = resultado;
-        alert(resultado)
-        alert(JSON.stringify(resultado[0]))
 
-        return resultado;
+
+    var respostaCadastro = this.projetoService.obterProjetos().subscribe(resultado =>
+      {
+        alert(resultado)
+        this.catalogoProjetos = resultado;
       }
       , error =>
       {
-
-        alert("err")
-        return null;
+        alert("Error"+error);
       }
       );
-
-    console.log(respostaCadastro);
-    console.log(respostaCadastro.unsubscribe);
+      respostaCadastro.unsubscribe;
   }
 
   submeterProjeto(){
@@ -107,7 +103,7 @@ export class CatalogoComponent implements OnInit {
     var novoProjeto : CadastroProjetoModel = {
       projetoId: "",
       titulo: this.formularioProjeto?.value?.titulo!,
-      objetivo: this.formularioProjeto?.value?.objetivo!, 
+      objetivo: this.formularioProjeto?.value?.objetivo!,
       descricao: this.formularioProjeto?.value?.descricao!,
       foto: this.formularioProjeto?.value?.foto!,
       valor: 0,
@@ -115,12 +111,12 @@ export class CatalogoComponent implements OnInit {
       usuarioId: "",
       jwt: jwt
     }
-    
+
     var tokenJWT : SessaoUsuario = jwt;
     //console.log(JSON.stringify(JSON.parse(tokenJWT.jwt.toString()).token));
-    novoProjeto.jwt = jwt; 
+    novoProjeto.jwt = jwt;
 
-    
+
     var respostaCadastro = this.projetoService.cadastrarProjeto(novoProjeto)
     .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
 

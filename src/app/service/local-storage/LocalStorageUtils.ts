@@ -59,15 +59,35 @@ export class LocalStorageUtils {
         var configuracao : ConfigureStorage | undefined =
         {
             'tema' : configLocalStorage!.tema,
-            'idioma' : configLocalStorage!.idioma, 
+            'idioma' : configLocalStorage!.idioma,
         }
         return configuracao;
     }
 
     public getLocalStorageJWT(){
-        var identidade : any = localStorage!.getItem('identidade.informacoes');
-        var jwt : Sessao = JSON.parse(identidade);
+        var identidade : any = localStorage.getItem('identidade.informacoes');
+        var jwt : Sessao;
+        if(identidade != null || identidade != undefined)
+        {
+          jwt = JSON.parse(identidade);
+          alert(jwt+"jwt")
+        }
+        jwt = {
+                nome: "",
+                email: "",
+                confirmarsenha: "",
+                senha: "",
+                telefone: "",
+                jwt : {
+                    autenticado: false,
+                    expiracao: "",
+                    mensagem: "",
+                    token: "",
+                    usuario: "",
+                }
+            }
 
-        return  jwt;
+          return  jwt;
+
     }
 }

@@ -2,33 +2,32 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, first } from 'rxjs';
 import { LocalStorageUtils } from '../local-storage/LocalStorageUtils';
-import { CadastroProjetoModel, JWT } from 'src/app/model/request/CadastroProjetoModel';
-import { SessaoUsuario } from 'src/app/model/sessao';
+import { CadastroProjetoModel } from 'src/app/model/request/CadastroProjetoModel';
 import { AutenticarService } from '../autenticar/autenticar.service';
-import { Projeto } from 'src/app/model/projeto';
-
+import { JWT } from 'src/app/model/jwt';
 @Injectable({
   providedIn: 'root'
-})  
+})
 
 
 export class ProjetoService {
-  private apiUrl = 'https://localhost:44301/api'; 
+  private apiUrl = 'https://localhost:44301/api';
   private tokenJWT = "";
 
   public LocalStorage = new LocalStorageUtils();
   constructor(
     private http: HttpClient,
-    private autenticarService: AutenticarService) {
+    private autenticarService: AutenticarService
+    ) {
      }
 
   cadastrarProjeto(projeto: any) : Observable<any> {
     this.tokenJWT = this.autenticarService.parseAnyInToken(projeto);
-    
+
     var usuarioLogado = this.LocalStorage.obtenTokenUsuario();
     //alert("test "+ JSON.stringify(projeto))
 
-    var jwtReq : JWT = 
+    var jwtReq : JWT =
     {
       autenticado: projeto?.jwt?.jwt!.autenticado,
       expiracao: projeto?.jwt?.jwt!.expiracao,
@@ -36,7 +35,7 @@ export class ProjetoService {
       token: projeto?.jwt?.jwt!.token,
       usuario: projeto?.jwt?.jwt!.usuario
     };
-    var projetoReq : CadastroProjetoModel = 
+    var projetoReq : CadastroProjetoModel =
     {
       projetoId: "",
       titulo: projeto.titulo,
@@ -49,21 +48,24 @@ export class ProjetoService {
       valor: projeto.valor
     }
     //alert("entrou"+ projeto.titulo+ "====="+`${this.apiUrl}/projeto/cadastrar-projeto`);
-    var headers = new HttpHeaders().set('Authorization', this.tokenJWT);//projeto.jwt
+    var headers = new HttpHeaders().set('Authorization', this.tokenJWT);
     return this.http.post<any>(this.apiUrl+"/projeto/cadastrar-projeto", projetoReq ,  { headers }).pipe(first());
   }
 
-  obterProjetos(token: string) : Observable<any> {
+    testa()
+    {
+      var t = this.http.get(this.apiUrl+"/projeto/obter-catalogo-projetoss").pipe(first());
+      alert(JSON.stringify(t));
+      return null
+    }
+  obterProjetos() : Observable<any> {
+    alert('test');
 
-    //this.tokenJWT = this.autenticarService.parseAnyInToken(projeto);
-    //alert(this.tokenJWT)
-    //this.tokenJWT = this.autenticarService.parseAnyInTokenNN(projeto);
-    
-    console.log("asdasdasd ---"+ token)
 
-    //var tokenJWT = this.autenticarService.parseAnyInToken(projeto);
-    var headers = new HttpHeaders().set('Authorization', token.toString());//projeto.jwt
-    return this.http.get<Projeto>(this.apiUrl+"/projeto/obter-catalogo-projetos", { headers }).pipe(first());
+
+
+    var headers = new HttpHeaders().set('Authorization', "");
+    return this.http.get<any>(this.apiUrl+"/projeto/obter-catalogo-projetos").pipe(first());
     //return null;
   }
 

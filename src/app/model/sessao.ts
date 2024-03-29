@@ -1,3 +1,5 @@
+import { JWT } from "./jwt";
+
 export interface Sessao {
     nome: string;
     telefone: string;
@@ -19,13 +21,5 @@ export interface Sessao {
     email: string;
     senha: string;
     confirmarSenha: string;
-    jwt: Jwt;
-  }
-
-  interface Jwt {
-    autenticado: boolean;
-    expiracao: string;
-    token: string;
-    mensagem: string;
-    usuario: string;
+    jwt: JWT;
   }

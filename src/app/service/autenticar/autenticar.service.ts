@@ -7,14 +7,14 @@ import { Observable, first } from 'rxjs';
 })
 export class AutenticarService {
 
-  private apiUrl = 'https://localhost:44301/api'; 
+  private apiUrl = 'https://localhost:44301/api';
   constructor(private http: HttpClient) { }
 
   login(loginModel: any) : Observable<any> {
     var headers = new HttpHeaders().set('Authorization', '');
     return this.http.post<any>(this.apiUrl+"/identidade/fazer-login", loginModel ,  { headers }).pipe(first());
   }
-  
+
   registrar(usuarioModel: any) : Observable<any> {
     var headers = new HttpHeaders().set('Authorization', '');
     return this.http.post<any>(this.apiUrl+"/identidade/cadastrar-usuario", usuarioModel ,  { headers }).pipe(first());
@@ -26,4 +26,6 @@ export class AutenticarService {
     parseAnyInTokenNN(any : any){
     return JSON.stringify(any.jwt.jwt.token);
   }
+
+
 }

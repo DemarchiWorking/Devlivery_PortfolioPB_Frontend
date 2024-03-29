@@ -7,5 +7,4 @@ export interface Projeto {
   foto: string;
   link: string;
   usuarioid: string;
-  jwt: string;
 }
