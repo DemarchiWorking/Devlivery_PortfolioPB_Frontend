@@ -22,27 +22,32 @@
       [ngClass]="{'light': !isDarkEnable, 'dark': isDarkEnable }">-->
 
     <li class="mx-4 my-6 md:my-0">
-      <a href="inicio" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[0] }}  </a>
+      <a [href]="menuNavIdioma[0].url" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[0].titulo }}  </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="negocio" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[1] }} </a>
+      <a [href]="menuNavIdioma[1].url" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[1].titulo }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="catalogo" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[2] }} </a>
+      <a  [href]="menuNavIdioma[2].url" class="text-xl hover:text-cyan-500 duration-500">{{ menuNavIdioma[2].titulo }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="networking" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[3] }} </a>
+      <a [href]="menuNavIdioma[3].url" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[3].titulo }} </a>
     </li>
     <li class="mx-4 my-6 md:my-0">
-      <a href="#" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[4] }}</a>
+      <a [href]="menuNavIdioma[4].url" *ngIf="menuNavIdioma[4].mostrar" class="text-xl hover:text-cyan-500 duration-500"> {{ menuNavIdioma[4].titulo }}</a>
     </li>
 
-    <a href="login">
+    <a href="login" *ngIf="logado==false">
       <button class="text-xl bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
-        Entrar
+        <span> Entrar </span>
       </button>
     </a>
 
+    <a href="login" *ngIf="logado==true" >
+    <button class="text-xl bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
+      <span> Sair </span>
+      </button>
+    </a>
 
   </ul>
 </nav>

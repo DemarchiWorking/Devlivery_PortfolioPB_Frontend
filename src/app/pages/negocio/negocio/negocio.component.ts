@@ -19,14 +19,14 @@ export class NegocioComponent implements OnInit {
 
   public localStorage = new LocalStorageUtils();
 
-  constructor(    
+  constructor(
     private formBuilder: FormBuilder,
     private negocioService: NegocioService,
     private  configStorageService : ConfigStorageService,
     private router: Router,
     private authService : AutenticarService
     ) { }
-  
+
     idioma : string = "pt";
     idiomaService: any;
     tokenJWT : any;
@@ -55,16 +55,16 @@ export class NegocioComponent implements OnInit {
       descricao: this.formularioNegocio?.value?.descricao!,
       link: this.formularioNegocio?.value?.link!,
       criacao: new Date(),
-      usuarioId: "",  
+      usuarioId: "",
       jwt: jwt
     }
-    
+
     var tokenJWT : SessaoUsuario = jwt;
     //console.log(JSON.stringify(JSON.parse(tokenJWT.jwt.toString()).token));
-    novoNegocio.jwt = jwt; 
+    novoNegocio.jwt = jwt;
 
     alert(JSON.stringify(novoNegocio.jwt));
-    
+
     var respostaCadastro = this.negocioService.cadastrarNegocio(novoNegocio)
     .subscribe(resultado => this.sucessoSubmeter(), error => this.falhouSubmeter(error));
 

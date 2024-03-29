@@ -1,6 +1,8 @@
+import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { IdiomaService } from 'src/app/service/idioma/idioma.service';
+import { LocalStorageUtils } from 'src/app/service/local-storage/LocalStorageUtils';
 
 @Component({
   selector: 'app-menu-principal',
@@ -19,12 +21,22 @@ import { IdiomaService } from 'src/app/service/idioma/idioma.service';
     ])
   ]
 })
+
 export class MenuPrincipalComponent implements OnInit {
   isMenu = false;
   isMobileMenu = false;
   idiomaAtual: string = "";
-  menuNavIdioma = ["Inicio", "Negócios", "Catálogo", "Networking", "Contato"];
+  logado = false;
+  menuNavIdioma //= ["Inicio", "Negócios", "Catálogo", "Networking", "Contato"];
+  = [
+    { titulo: "inicio", mostrar: true, url: "inicio"},
+    { titulo: "negócios", mostrar: true, url: "negocio" },
+    { titulo: "catálogo", mostrar: true, url: "catalogo" },
+    { titulo: "networking", mostrar: true, url: "networking" },
+    { titulo: "contato", mostrar: true, url: "contato" }
+  ];
 
+  public localStorage = new LocalStorageUtils();
 
   constructor(private idiomaService: IdiomaService)
   { this.idiomaService.idiomaAtual$.subscribe((idioma) => {
@@ -33,14 +45,35 @@ export class MenuPrincipalComponent implements OnInit {
     switch(this.idiomaAtual)
     {
       case 'pt':
-        this.menuNavIdioma = ["Inicio",  "Negócios", "Catálogo", "Networking", "Contato"];
+        this.menuNavIdioma =
+          [
+            { titulo: "Inicio", mostrar: true , url: "inicio"},
+            { titulo: "Negócios", mostrar: true , url: "negocio"},
+            { titulo: "Catálogo", mostrar: true, url: "catalogo"  },
+            { titulo: "Networking", mostrar: true, url: "networking" },
+            { titulo: "Contato", mostrar: true , url: "contato" }
+          ];
         break;
         case 'en':
-        this.menuNavIdioma = ["Home", "Business", "Catalog" , "Networking", "Contact"];
+        this.menuNavIdioma =
+          [
+            { titulo: "Home", mostrar: true , url: "inicio"},
+            { titulo: "Business", mostrar: true, url: "negocio" },
+            { titulo: "Catalog", mostrar: true, url: "catalogo"  },
+            { titulo: "Networking", mostrar: true, url: "networking" },
+            { titulo: "Contact", mostrar: true , url: "contato" }
+          ];
         break;
-      case 'es':
-        this.menuNavIdioma = ["Inicio", "Negocios",  "Catálogo", "Redes", "Contacto"];
-        break;
+        case 'es':
+        this.menuNavIdioma =
+          [
+            { titulo: "Inicio", mostrar: true , url: "inicio"},
+            { titulo: "Negocios", mostrar: true, url: "negocio" },
+            { titulo: "Catálogo", mostrar: true, url: "catalogo"  },
+            { titulo: "Redes", mostrar: true, url: "networking" },
+            { titulo: "Contacto", mostrar: true, url: "contato"  }
+          ]
+          break;
       default:
         break;
     }
@@ -49,6 +82,7 @@ export class MenuPrincipalComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.verificaSeUsuarioEstaLogado()
   }
 
   toggleMenu(){
@@ -61,11 +95,23 @@ export class MenuPrincipalComponent implements OnInit {
   idioma() {
    // this.idiomaSelecionado.emit();
   }
-  test()
+  verificaSeUsuarioEstaLogado()
   {
-   // alert(" TESTANDO >> "+this.texto);
-  // this.texto = this.idiomaService.obterIdioma();
-   // alert(" TESTANDO >> "+this.texto);
-  }
 
+    var jwt : any = this.localStorage.getLocalStorageJWT();
+    alert("ae"+JSON.stringify(jwt));
+    if(jwt != null || jwt != undefined)
+    {
+      this.logado = true;
+      //this.menuNavIdioma = this.menuNavIdioma.filter(item => !item.titulo.toLowerCase().includes('cont'));
+      for (const item of this.menuNavIdioma) {
+        if (item.titulo.toLowerCase().includes("cont") ) {
+          item.mostrar = false;
+        }
+
+      }
+      alert(JSON.stringify(this.menuNavIdioma));
+    }
   }
+}
+

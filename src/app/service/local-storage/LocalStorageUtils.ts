@@ -66,26 +66,8 @@ export class LocalStorageUtils {
 
     public getLocalStorageJWT(){
         var identidade : any = localStorage.getItem('identidade.informacoes');
-        var jwt : Sessao;
-        if(identidade != null || identidade != undefined)
-        {
-          jwt = JSON.parse(identidade);
-          alert(jwt+"jwt")
-        }
-        jwt = {
-                nome: "",
-                email: "",
-                confirmarsenha: "",
-                senha: "",
-                telefone: "",
-                jwt : {
-                    autenticado: false,
-                    expiracao: "",
-                    mensagem: "",
-                    token: "",
-                    usuario: "",
-                }
-            }
+        var jwt : Sessao = JSON.parse(identidade);
+
 
           return  jwt;
 

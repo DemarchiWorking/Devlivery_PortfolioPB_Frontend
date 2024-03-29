@@ -26,23 +26,22 @@ export class AuthInterceptorService {
     {
       tokenJWT = JSON.parse(identidade);
     }else{
-      tokenJWT = {
-        nome: "",
-        email: "",
-        confirmarsenha: "",
-        senha: "",
-        telefone: "",
-        jwt : {
-            autenticado: false,
-            expiracao: "",
-            mensagem: "",
-            token: "",
-            usuario: "",
-        }
+        tokenJWT =
+        {
+            nome: "",
+            email: "",
+            confirmarsenha: "",
+            senha: "",
+            telefone: "",
+            jwt : {
+                autenticado: false,
+                expiracao: "",
+                mensagem: "",
+                token: "",
+                usuario: "",
+          }
+      }
     }
-    }
-    //var tokenJWT : any = this.LocalStorage.getLocalStorageJWT();
-
     const token = tokenJWT.jwt.token;
     console.log("intercep : "+token);
 
